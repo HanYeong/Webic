@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.spring.webic.dao.playMapper">
+
+    <select id="selectPlayList" resultType="playDTO">
+        SELECT t1.pno, t2.* FROM playlist t1, musiclist t2 WHERE t1.no = t2.no AND t2.userId = #{id}
+    </select>
+    
+    <select id="insertPlayList" resultType="playDTO">
+        INSERT INTO playlist (no) VALUES (#{no})
+    </select>
+    
+    <select id="deletePlayList" resultType="playDTO">
+        DELETE t1 FROM playlist t1, musiclist t2 WHERE t1.no = t2.no AND t2.userId = #{id};
+    </select>
+</mapper>

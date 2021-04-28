@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.spring.webic.dao.musicMapper">
+
+    <select id="selectMusicList" resultType="musicDTO">
+        SELECT * FROM musiclist WHERE userId = #{id}
+    </select>
+    
+    <select id="selectPlayList" resultType="musicDTO">
+        SELECT t1.pno, t2.* FROM playlist t1, musiclist t2 WHERE t1.no = t2.no AND t2.userId = #{idc}
+    </select>
+    
+    <select id="insertMusicList" resultType="musicDTO">
+        INSERT INTO musiclist (userId, title, address) VALUES (#{id}, #{title}, #{address})
+    </select>
+    
+</mapper>
